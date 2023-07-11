@@ -3,11 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ClientesComponent } from './clientes/clientes.component';
 import { ClientesModule } from './clientes/clientes.module';
 import { TemplateModule } from './template/template.module';
 import { HomeComponent } from './home/home.component';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [		
     AppComponent,
@@ -17,7 +16,8 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     AppRoutingModule,
     ClientesModule,
-    TemplateModule
+    TemplateModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
