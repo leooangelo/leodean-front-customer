@@ -13,8 +13,11 @@ export class TokenInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    const urlRequest = request.url;
     const tokenString = localStorage.getItem('access_token');
-    if(tokenString){
+    
+    debugger
+    if(tokenString && !urlRequest.endsWith(`/api/customer`)){
       request = request.clone({
         setHeaders: {
           Authorization: 'Bearer ' + tokenString

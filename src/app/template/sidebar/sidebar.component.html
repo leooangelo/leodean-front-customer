@@ -21,11 +21,20 @@
           <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
           Contas
         </a>
+
+
+        <div class="sb-sidenav-menu-heading">Logout</div>
+        <a class="nav-link collapsed" (click)="Logout()" href="#" data-toggle="collapse" data-target="#collapseLayouts"
+          aria-expanded="false" aria-controls="collapseLayouts">
+          <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i></div>
+          Sair
+        </a>
+
       </div>
     </div>
     <div class="sb-sidenav-footer">
-      <div class="small">Logged in as:</div>
-      Start Bootstrap
+      <div class="small">Usuario: </div>
+      {{usuarioLogado}}
     </div>
   </nav>
 </div>
