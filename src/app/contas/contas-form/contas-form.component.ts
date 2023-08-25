@@ -24,7 +24,10 @@ export class ContasFormComponent implements OnInit {
   }
 
   getContas(){
+
     this.clienteService.BuscarContas().subscribe(data =>{
+     debugger;
+     console.log(data)
       this.sucess = true;
       this.errors = [];
       this.contasLista = data;

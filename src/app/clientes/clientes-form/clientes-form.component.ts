@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from '../cliente';
 import { ClientesService } from 'src/app/services/clientes.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-clientes-form',
@@ -12,21 +13,33 @@ export class ClientesFormComponent implements OnInit{
   cliente: Cliente;
   sucess : boolean = false;
   errors: any = [];
-  constructor(private clienteService: ClientesService){
+  constructor(
+    private router: Router,
+    private clienteService: ClientesService){
     this.cliente = new Cliente();
   }
   ngOnInit(): void {
   }
 
   onSubmit(){
-    this.clienteService.Salvar(this.cliente).subscribe(data =>{
+    this.clienteService.SalvarCadastro(this.cliente).subscribe(data =>{
       this.sucess = true;
       this.errors = [];
       this.cliente = data;
-      console.log(data);
+      this.router.navigate(['/login'])
     }, errorResponse =>{
-      this.sucess = false;
-      this.errors = errorResponse.error.erros;
+      if(errorResponse.error.codigo != undefined ){
+        this.sucess = false;
+        const listError = [];
+        listError.push(errorResponse.error)
+        this.errors = listError;
+
+      }
+      else{
+        console.log(errorResponse)
+        this.sucess = false;
+        this.errors = errorResponse.error.erros;
+      }
     })
   }
 

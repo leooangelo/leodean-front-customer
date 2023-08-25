@@ -14,7 +14,7 @@ export class ClientesService {
   apiURL: string = environment.apiURL;
   constructor(private http: HttpClient) { }
 
-  Salvar(cliente: Cliente): Observable<Cliente>{
+  SalvarCadastro(cliente: Cliente): Observable<Cliente>{
     return this.http.post<Cliente>(`${this.apiURL}/api/customer`,cliente);
   }
 

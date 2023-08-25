@@ -5,24 +5,39 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TemplateModule } from './template/template.module';
 import { HomeComponent } from './home/home.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ClientesModule } from './clientes/clientes.module';
 import { ClientesService } from './services/clientes.service';
 import { ContasModule } from './contas/contas.module';
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
+import { LayoutComponent } from './layout/layout.component';
+import { AuthService } from './services/auth.service';
+import { TokenInterceptor } from './token.interceptor';
 @NgModule({
   declarations: [		
     AppComponent,
-      HomeComponent
+      HomeComponent,
+      LoginComponent,
+      LayoutComponent
    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     TemplateModule,
     HttpClientModule,
     ClientesModule,
-    ContasModule
+    ContasModule,
+
   ],
-  providers: [ClientesService],
+  providers: [ClientesService,
+  AuthService,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

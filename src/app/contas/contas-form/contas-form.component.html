@@ -2,12 +2,12 @@
 <ol class="breadcrumb mb-5">
     <li class="breadcrumb-bitem active">Cadastro</li>
 </ol>
-<form #clienteForm="ngForm" (ngSubmit)="onSubmit()">
+<form #contaForm="ngForm" (ngSubmit)="onSubmit()">
 
     <div class="row">
         <div class="col-md-12">
             <div class="alert alert-success" role="alert" *ngIf="sucess == true">
-                Cliente salvo com sucesso!
+                Conta criada com sucesso!
             </div>
 
             <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
