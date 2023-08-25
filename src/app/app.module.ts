@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { LayoutComponent } from './layout/layout.component';
 import { AuthService } from './services/auth.service';
 import { TokenInterceptor } from './token.interceptor';
+import { AgendamentoService } from './services/agendamento.service';
+import { AgendamentoModule } from './agendamento/agendamento.module';
 @NgModule({
   declarations: [		
     AppComponent,
@@ -29,10 +31,12 @@ import { TokenInterceptor } from './token.interceptor';
     HttpClientModule,
     ClientesModule,
     ContasModule,
+    AgendamentoModule
 
   ],
   providers: [ClientesService,
   AuthService,
+  AgendamentoService,
   {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,

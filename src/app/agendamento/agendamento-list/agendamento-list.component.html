@@ -1,0 +1,51 @@
+<h1 class="mt-4"> Agendamentos </h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Consulta</li>
+</ol>
+<div class="row">
+    <div class="col-md-2">
+        <button class="btn btn-warning" (click)="novoCadastroAgendamento()">
+            <i class="fa fa-plus"></i>Novo
+        </button>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-condensed table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Agência</th>
+                    <th>Conta</th>
+                    <th>Agência Destino</th>
+                    <th>Conta Destino</th>
+                    <th>Tipo Transação</th>
+                    <th>Valor</th>
+                    <th>Valor Total Taxa</th>
+                    <th>Valor Total Transação</th>
+                    <th>Data Agendamento</th>
+                    <th>Data Transação</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let agendamento of agendamentosLista ">
+                    <td>{{agendamento.id}}</td>
+                    <td>{{agendamento.conta_origem.agencia}}</td>
+                    <td>{{agendamento.conta_origem.numero_conta}}</td>
+                    <td>{{agendamento.conta_destino.agencia}}</td>
+                    <td>{{agendamento.conta_destino.numero_conta}}</td>
+
+                    <td>{{agendamento.tipo_transacao}}</td>
+                    <td>{{agendamento.valor}}</td>
+                    <td>{{agendamento.valor_taxa}}</td>
+                    <td>{{agendamento.valor_total}}</td>
+                    <td>{{agendamento.data_agendamento}}</td>
+                    <td>{{agendamento.data_transacao}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

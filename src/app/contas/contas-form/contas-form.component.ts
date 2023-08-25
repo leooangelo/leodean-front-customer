@@ -28,8 +28,18 @@ export class ContasFormComponent implements OnInit {
       this.errors = [];
       this.contaResponse = data;
     }, errorResponse =>{
-      this.sucess = false;
-      this.errors = errorResponse.error.erros;
+      if(errorResponse.error.codigo != undefined ){
+        this.sucess = false;
+        const listError = [];
+        listError.push(errorResponse.error)
+        this.errors = listError;
+
+      }
+      else{
+        console.log(errorResponse)
+        this.sucess = false;
+        this.errors = errorResponse.error.erros;
+      }
     })
   }
 

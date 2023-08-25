@@ -4,12 +4,12 @@ import { ClientesFormComponent } from './clientes-form/clientes-form.component';
 import { LayoutComponent } from '../layout/layout.component';
 
 const routes: Routes = [
-  {path: 'clientes', component: LayoutComponent, children: [
+   {path: 'clientes', component: LayoutComponent, children: [
 
-    {path: 'form', component: ClientesFormComponent},
-    {path: '', redirectTo: '/clientes/form', pathMatch: 'full' }
+  //   {path: 'form', component: ClientesFormComponent},
+     {path: '', redirectTo: '/home', pathMatch: 'full' }
 
-  ]}, 
+   ]}, 
 
 ];
 
