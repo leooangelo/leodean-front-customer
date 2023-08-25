@@ -3,18 +3,31 @@
     <li class="breadcrumb-item active">Cadastro</li>
 </ol>
 <form #clienteForm="ngForm" (ngSubmit)="onSubmit()">
+
     <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label>ID</label>
-                <input type="text" class="form-control" [ngModel]="cliente.id_cliente" name="id_cliente"
-                    disabled="true" />
+        <div class="col-md-12">
+            <div class="alert alert-success" role="alert" *ngIf="sucess == true">
+                Cliente salvo com sucesso!
+            </div>
+
+            <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
+                {{erro.mensagem}}
             </div>
         </div>
-        <div class="col-md-6">
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
             <div class="form-group">
                 <label>Nome</label>
                 <input type="text" class="form-control" [(ngModel)]="cliente.nome" name="nome" />
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>CPF</label>
+                <input type="text" class="form-control" [(ngModel)]="cliente.cpf" name="cpf" />
             </div>
         </div>
     </div>
@@ -30,6 +43,13 @@
             <div class="form-group">
                 <label>Email</label>
                 <input type="text" class="form-control" [(ngModel)]="cliente.email" name="email" />
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Senha</label>
+                <input type="text" class="form-control" [(ngModel)]="cliente.password" name="password" />
             </div>
         </div>
     </div>

@@ -2,24 +2,28 @@ import { Injectable } from '@angular/core';
 import { Cliente } from '../clientes/cliente';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ContaRequest } from '../contas/conta';
+import { ContaResponse } from '../contas/conta-response';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientesService {
 
+  apiURL: string = environment.apiURL;
   constructor(private http: HttpClient) { }
 
   Salvar(cliente: Cliente): Observable<Cliente>{
-    const url = 'http://localhost:8080/api/customer';
-    return this.http.post<Cliente>(url,cliente);
-    
+    return this.http.post<Cliente>(`${this.apiURL}/api/customer`,cliente);
   }
-  getCliente() : Cliente{
-    let cliente: Cliente = new Cliente();
-    cliente.nome = "Leo";
-    cliente.email = "teste@gmail";
-    cliente.telefone = "11916691211"
-    return cliente;
+
+  SalvarConta(conta: ContaRequest): Observable<ContaResponse>{
+    return this.http.post<ContaRequest>(`${this.apiURL}/api/account`,conta);
   }
+
+  BuscarContas(): Observable<ContaResponse[]>{
+    return this.http.get<ContaResponse[]>(`${this.apiURL}/api/account`);
+  }
+
 }
