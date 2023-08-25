@@ -20,21 +20,6 @@ export class ContasFormComponent implements OnInit {
     this.contaResponse = new ContaResponse();
   }
   ngOnInit(): void {
-    this.getContas();
-  }
-
-  getContas(){
-
-    this.clienteService.BuscarContas().subscribe(data =>{
-     debugger;
-     console.log(data)
-      this.sucess = true;
-      this.errors = [];
-      this.contasLista = data;
-    }, errorResponse =>{
-      this.sucess = false;
-      this.errors = errorResponse.error.erros;
-    })
   }
 
   onSubmit(){

@@ -1,1 +1,35 @@
-<p>contas-list works!</p>
+<h1 class="mt-4"> Contas </h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Consulta</li>
+</ol>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <button class="btn btn-warning" (click)="novoCadastroConta()">
+                <i class="fa fa-plus"></i>Novo
+            </button>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-condensed table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Agência</th>
+                        <th>Conta</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let conta of contasLista ">
+                        <td>{{conta.id}}</td>
+                        <td>{{conta.agencia}}</td>
+                        <td>{{conta.numero_conta}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

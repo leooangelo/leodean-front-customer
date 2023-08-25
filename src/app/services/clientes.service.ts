@@ -22,8 +22,8 @@ export class ClientesService {
     return this.http.post<ContaRequest>(`${this.apiURL}/api/account`,conta);
   }
 
-  BuscarContas(): Observable<ContaResponse[]>{
-    return this.http.get<ContaResponse[]>(`${this.apiURL}/api/account`);
+  BuscarContas(): Observable<any>{
+    return this.http.get(`${this.apiURL}/api/account`).pipe();
   }
 
 }
