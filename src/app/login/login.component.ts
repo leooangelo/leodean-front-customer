@@ -27,18 +27,12 @@ export class LoginComponent {
   }
 
   onSubmit(){
-    debugger
     this.authService.AutenticarUsuario(this.buildBodyAuthUsuario()).subscribe(response =>{
-      debugger
       this.sucess = true;
       this.errors = [];
-      console.log(response);
-      //const access_token = JSON.stringify(response);
-      console.log(response);
       localStorage.setItem('access_token',response);
       this.router.navigate(['/home'])
     }, errorResponse =>{
-        console.log(errorResponse)
         this.sucess = false;
         this.errors = errorResponse.error.erros;
     });

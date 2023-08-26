@@ -25,14 +25,16 @@
 
                                         <div *ngIf="isLogin" class="form-group">
                                             <label class="small mb-1">Email</label>
-                                            <input type="text" name="email" [(ngModel)]="email" class="form-control py4"
-                                                autocomplete="off" placeholder="Digite seu Login">
+                                            <input type="email" name="email" [(ngModel)]="email"
+                                                class="form-control py4" autocomplete="off"
+                                                placeholder="Digite seu Login" required>
                                         </div>
 
                                         <div *ngIf="isLogin" class="form-group">
                                             <label class="small mb-1">Senha</label>
                                             <input type="password" name="password" [(ngModel)]="password"
-                                                class="form-control py4" placeholder="Digite sua Senha">
+                                                class="form-control py4" placeholder="Digite sua Senha" minlength="5"
+                                                maxlength="20" required>
                                         </div>
 
                                         <div

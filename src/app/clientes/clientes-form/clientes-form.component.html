@@ -14,32 +14,35 @@
 
     <div class="form-group">
         <label class="small mb-1">Nome</label>
-        <input type="text" name="nome" [(ngModel)]="cliente.nome" class="form-control py4" autocomplete="off"
-            placeholder="Digite seu Nome Completo">
+        <input type="text" name="nome" oninput="this.value = this.value.replace(/[^a-zA-Z.]/g, '')"
+            [(ngModel)]="cliente.nome" class="form-control py4" autocomplete="off"
+            placeholder="Digite seu Nome Completo" minlength="2" maxlength="100" required>
     </div>
 
     <div class="form-group">
         <label class="small mb-1">Telefone</label>
-        <input type="text" name="telefone" [(ngModel)]="cliente.telefone" class="form-control py4" autocomplete="off"
-            placeholder="Digite seu Telefone">
+        <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '')" name="telefone"
+            [(ngModel)]="cliente.telefone" class="form-control py4" autocomplete="off" placeholder="Digite seu Telefone"
+            minlength="11" maxlength="11" required>
     </div>
 
     <div class="form-group">
         <label class="small mb-1">CPF</label>
-        <input type="text" name="cpf" [(ngModel)]="cliente.cpf" autocomplete="off" class="form-control py4"
-            placeholder="Digite seu CPF">
+        <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '')" name="cpf"
+            [(ngModel)]="cliente.cpf" autocomplete="off" class="form-control py4" placeholder="Digite seu CPF"
+            mask="000.000.000-00" minlength="11" maxlength="11" required>
     </div>
 
     <div class="form-group">
         <label class="small mb-1">Email</label>
         <input type="text" name="email" [(ngModel)]="cliente.email" class="form-control py4" autocomplete="off"
-            placeholder="Digite seu Login">
+            placeholder="Digite seu Login" required>
     </div>
 
     <div class="form-group">
         <label class="small mb-1">Senha</label>
         <input type="password" name="password" [(ngModel)]="cliente.password" class="form-control py4"
-            autocomplete="off" placeholder="Digite sua Senha">
+            autocomplete="off" placeholder="Digite sua Senha" minlength="5" maxlength="20" required>
     </div>
 
     <div class="row">

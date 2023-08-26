@@ -1,7 +1,5 @@
 <h1 class="mt-4"> Contas </h1>
-<ol class="breadcrumb mb-5">
-    <li class="breadcrumb-bitem active">Cadastro</li>
-</ol>
+<br />
 <form #contaForm="ngForm" (ngSubmit)="onSubmit()">
 
     <div class="row">
@@ -19,15 +17,17 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label>Agencia</label>
-                <input type="text" class="form-control" [(ngModel)]="conta.agencia" name="nome" />
+                <label>Agência</label>
+                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '')" class="form-control"
+                    [(ngModel)]="conta.agencia" name="agencia" minlength="4" maxlength="4" required />
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="form-group">
                 <label>Conta</label>
-                <input type="text" class="form-control" [(ngModel)]="conta.conta" name="cpf" />
+                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '')" class="form-control"
+                    [(ngModel)]="conta.conta" name="conta" minlength="6" maxlength="6" required />
             </div>
         </div>
     </div>
@@ -35,7 +35,7 @@
     <div class="row">
         <div class="col-md-2">
             <button type="submit" class="btn btn-success">
-                <i class="fa fa-save"></i>Salvar
+                <i class="fa fa-save"></i> Salvar
             </button>
         </div>
     </div>

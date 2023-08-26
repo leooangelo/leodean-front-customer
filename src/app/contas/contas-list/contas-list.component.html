@@ -1,35 +1,39 @@
 <h1 class="mt-4"> Contas </h1>
-<ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">Consulta</li>
-</ol>
-<div class="container">
-    <div class="row">
-        <div class="col-md-2">
-            <button class="btn btn-warning" (click)="novoCadastroConta()">
-                <i class="fa fa-plus"></i>Novo
-            </button>
-        </div>
+<br />
+<div class="row-button">
+    <div class="col-md-3">
+        <button class="mat-button" mat-raised-button color="accent" (click)="novoCadastroConta()">Novo</button>
     </div>
-    <br />
-    <div class="row">
-        <div class="col-md-12">
-            <table class="table table-condensed table-hover">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Agência</th>
-                        <th>Conta</th>
-                    </tr>
-                </thead>
 
-                <tbody>
-                    <tr *ngFor="let conta of contasLista ">
-                        <td>{{conta.id}}</td>
-                        <td>{{conta.agencia}}</td>
-                        <td>{{conta.numero_conta}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+</div>
+<br />
+<div class="row">
+    <div class="mat-elevation-z8">
+        <mat-table [dataSource]="contasLista" matSort>
+
+            <!-- ID Column -->
+            <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+            </ng-container>
+
+            <!-- ID Column -->
+            <ng-container matColumnDef="agencia">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Agencia </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.agencia}} </mat-cell>
+            </ng-container>
+
+            <!-- ID Column -->
+            <ng-container matColumnDef="numero_conta">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Numero Conta </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.numero_conta}} </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;">
+            </mat-row>
+        </mat-table>
+        <mat-paginator #paginator [pageSize]="size" [pageSizeOptions]="[5, 10, 25, 100]" [length]="totalSize">
+        </mat-paginator>
     </div>
 </div>

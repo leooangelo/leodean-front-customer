@@ -1,1 +1,93 @@
-<p>agendamento-form works!</p>
+<h1 class="mt-4"> Agendamento </h1>
+<br />
+<form #contaForm="ngForm" (ngSubmit)="onSubmit()">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success" role="alert" *ngIf="sucess == true">
+                Agendamento criado com sucesso!
+            </div>
+
+            <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
+                {{erro.mensagem}}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label>Data Agendamento</label>
+                <input type="date" class="form-control" [(ngModel)]="agendamentoRequest.data_agendamento"
+                    name="data_agendamento" required />
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="form-group">
+                <label>Data Transferência</label>
+                <input type="date" class="form-control" [(ngModel)]="agendamentoRequest.data_transacao"
+                    name="data_transacao" required />
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="form-group">
+                <div class="input-group-addon">Valor Transferência R$</div>
+                <input type="number" class="form-control" [(ngModel)]="agendamentoRequest.valor" name="valor" min="0.00"
+                    step="0.05" value="1.00" id="valor" required>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <div class="input-group-addon">Tipo Transferência</div>
+                <select class="form-select" aria-label="Default select example"
+                    [(ngModel)]="agendamentoRequest.tipo_transacao" (change)="TipoTransferenciaSelecionada($event)">
+                    <option *ngFor="let taxa of taxas" [value]="taxa.value" required>
+                        {{taxa.viewValue}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="input-group-addon">Conta Origem</div>
+                <select class="form-select" aria-label="Default select example"
+                    [(ngModel)]="agendamentoRequest.conta_origem" (change)="contaSelecionada($event)">
+                    <option *ngFor="let conta of contasLista" [value]="conta.id" required>
+                        Agência: {{conta.agencia}} - Conta: {{conta.numero_conta}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="form-group">
+                <div class="input-group-addon">Agencia Destino</div>
+                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '')" name="agencia_destino"
+                    [(ngModel)]="agencia_destino" class="form-control py4" autocomplete="off"
+                    placeholder="Agência Destino" minlength="4" maxlength="4" required>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <div class="input-group-addon">Conta Destino</div>
+                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '')" name="conta_destino"
+                    [(ngModel)]="conta_destino" class="form-control py4" autocomplete="off" placeholder="Conta Destino"
+                    minlength="6" maxlength="6" required>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-success">
+                <i class="fa fa-save"></i> Salvar
+            </button>
+        </div>
+    </div>
+</form>
