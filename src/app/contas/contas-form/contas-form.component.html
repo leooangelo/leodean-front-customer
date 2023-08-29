@@ -1,6 +1,6 @@
 <h1 class="mt-4"> Contas </h1>
 <br />
-<form #contaForm="ngForm" (ngSubmit)="onSubmit()">
+<form [formGroup]='contaForm' (ngSubmit)="onSubmit()">
 
     <div class="row">
         <div class="col-md-12">
@@ -15,11 +15,40 @@
     </div>
 
     <div class="row">
+
+        <div class="col-md-4 my-3">
+            <div class="form-group">
+                <mat-form-field class="agencia">
+                    <label>Agência</label>
+                    <input matInput formControlName="agencia" minlength="4" maxlength="4" required
+                        oninput="this.value = this.value.replace(/[^0-9.]/g, '')" />
+                    <mat-error *ngIf="contaForm.get('agencia')?.hasError('required')">Agência é obrigatório
+                        !</mat-error>
+                    <mat-error *ngIf="contaForm.get('agencia')?.hasError('minlength')">Agência deve ter 3
+                        digitos !</mat-error>
+
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="col-4 my-3">
+            <div class="form-group">
+                <mat-form-field class="conta">
+                    <label>Conta</label>
+                    <input matInput formControlName="conta" minlength="6" maxlength="6" required
+                        oninput="this.value = this.value.replace(/[^0-9.]/g, '')" />
+                    <mat-error *ngIf="contaForm.get('conta')?.hasError('required')">Conta é obrigatório !</mat-error>
+                    <mat-error *ngIf="contaForm.get('conta')?.hasError('minlength')">Conta deve ter 6
+                        digitos !</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <!-- 
         <div class="col-md-4">
             <div class="form-group">
                 <label>Agência</label>
                 <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '')" class="form-control"
-                    [(ngModel)]="conta.agencia" name="agencia" minlength="4" maxlength="4" required />
+                    formControlName="agencia" name="agencia" minlength="4" maxlength="4" required />
             </div>
         </div>
 
@@ -27,14 +56,14 @@
             <div class="form-group">
                 <label>Conta</label>
                 <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '')" class="form-control"
-                    [(ngModel)]="conta.conta" name="conta" minlength="6" maxlength="6" required />
+                    formControlName="conta" name="conta" minlength="6" maxlength="6" required />
             </div>
-        </div>
+        </div> -->
     </div>
 
     <div class="row">
         <div class="col-md-2">
-            <button type="submit" class="btn btn-success">
+            <button [disabled]="!contaForm.valid" type="submit" class="btn btn-success">
                 <i class="fa fa-save"></i> Salvar
             </button>
         </div>

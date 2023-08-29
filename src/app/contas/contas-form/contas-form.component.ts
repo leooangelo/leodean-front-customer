@@ -2,6 +2,7 @@ import { ContaResponse } from './../conta-response';
 import { Component, OnInit } from '@angular/core';
 import { ClientesService } from 'src/app/services/clientes.service';
 import { ContaRequest } from '../conta';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-contas-form',
@@ -15,18 +16,28 @@ export class ContasFormComponent implements OnInit {
   contasLista: ContaResponse[] = [];
   sucess : boolean = false;
   errors: any = [];
-  constructor( private clienteService: ClientesService) {
+  contaForm: FormGroup;
+  constructor( private clienteService: ClientesService,
+    private formBuilder: FormBuilder) {
     this.conta = new ContaRequest();
     this.contaResponse = new ContaResponse();
   }
   ngOnInit(): void {
+
+    this.contaForm = this.formBuilder.group({
+      agencia:['',[Validators.required, Validators.maxLength, Validators.minLength]],
+      conta: ['',[Validators.required, Validators.maxLength, Validators.minLength]]
+    })
   }
 
   onSubmit(){
-    this.clienteService.SalvarConta(this.conta).subscribe(data =>{
+    this.clienteService.SalvarConta(this.contaForm.value).subscribe(data =>{
       this.sucess = true;
       this.errors = [];
       this.contaResponse = data;
+      setTimeout(() => {
+        window.location.reload();
+     }, 2000);
     }, errorResponse =>{
       if(errorResponse.error.codigo != undefined ){
         this.sucess = false;

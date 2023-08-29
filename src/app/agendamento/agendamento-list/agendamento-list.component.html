@@ -1,17 +1,17 @@
 <h1 class="mt-4"> Agendamentos </h1>
 <br />
 <div class="row">
-    <div class="col-md-2">
-        <div class="col-md-3">
-            <button class="mat-button" mat-raised-button color="accent"
-                (click)="novoCadastroAgendamento()">Novo</button>
+    <div class="col-md-3">
+        <div class="col-md-4">
+            <button class="mat-button" mat-raised-button color="accent" (click)="novoCadastroAgendamento()"> +
+                Novo</button>
         </div>
     </div>
 </div>
 <br />
 <div class="row">
     <div class="mat-elevation-z8">
-        <mat-table [dataSource]="agendamentosLista" matSort>
+        <table mat-table [dataSource]="dataSource" matSort>
 
             <!-- ID Column -->
             <div class="col-md-2">
@@ -83,10 +83,10 @@
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;">
             </mat-row>
-        </mat-table>
+        </table>
 
-        <mat-paginator #paginator [pageSize]="size" [pageSizeOptions]="[5, 10, 25, 100]" [showFirstLastButtons]="true"
-            [length]="totalSize" [pageIndex]="page" (page)="handlePage($event)">
+        <mat-paginator #paginator [pageSizeOptions]="pageSizeOptions" [pageIndex]="0" [pageSize]="10"
+            [length]="totalSize" (page)="getNext($event)" showFirstLastButtons="true">
         </mat-paginator>
     </div>
 </div>

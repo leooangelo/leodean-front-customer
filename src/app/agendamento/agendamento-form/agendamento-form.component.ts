@@ -1,10 +1,8 @@
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Agendamento } from '../agendamento';
 import { AgendamentoService } from 'src/app/services/agendamento.service';
 import { AgendamentoResponse } from '../agendamento-response';
 import { Taxa, taxas } from '../taxas';
-import * as moment from 'moment';
 import { ClientesService } from 'src/app/services/clientes.service';
 import { ContaResponse } from 'src/app/contas/conta-response';
 
@@ -41,6 +39,9 @@ export class AgendamentoFormComponent implements OnInit {
       this.sucess = true;
       this.errors = [];
       this.agendamentoResponse = data;
+      setTimeout(() => {
+        window.location.reload();
+     }, 2000);
     }, errorResponse =>{
       if(errorResponse.error.codigo != undefined ){
         this.sucess = false;

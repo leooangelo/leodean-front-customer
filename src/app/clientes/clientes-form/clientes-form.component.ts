@@ -27,6 +27,9 @@ export class ClientesFormComponent implements OnInit{
       this.errors = [];
       this.cliente = data;
       this.router.navigate(['/login'])
+      setTimeout(() => {
+        window.location.reload();
+     }, 3000);
     }, errorResponse =>{
       if(errorResponse.error.codigo != undefined ){
         this.sucess = false;

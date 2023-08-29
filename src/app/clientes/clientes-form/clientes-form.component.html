@@ -21,16 +21,14 @@
 
     <div class="form-group">
         <label class="small mb-1">Telefone</label>
-        <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '')" name="telefone"
-            [(ngModel)]="cliente.telefone" class="form-control py4" autocomplete="off" placeholder="Digite seu Telefone"
-            minlength="11" maxlength="11" required>
+        <input type="text" name="telefone" [(ngModel)]="cliente.telefone" class="form-control py4" autocomplete="off"
+            placeholder="Digite seu Telefone" required [mask]="'(00)00000-0000'">
     </div>
 
     <div class="form-group">
         <label class="small mb-1">CPF</label>
-        <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '')" name="cpf"
-            [(ngModel)]="cliente.cpf" autocomplete="off" class="form-control py4" placeholder="Digite seu CPF"
-            mask="000.000.000-00" minlength="11" maxlength="11" required>
+        <input type="text" name="cpf" [(ngModel)]="cliente.cpf" autocomplete="off" class="form-control py4"
+            placeholder="Digite seu CPF" [mask]="'000.000.000-00'" required>
     </div>
 
     <div class="form-group">

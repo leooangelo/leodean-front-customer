@@ -24,6 +24,7 @@
     "gridjs": "^6.0.6",
     "jquery": "^3.7.0",
     "moment": "^2.29.4",
+    "ngx-mask": "^14.2.4",
     "ngx-toastr": "^17.0.2",
     "popper.js": "^1.16.1",
     "rxjs": "~7.8.0",

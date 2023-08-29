@@ -111,6 +111,6 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatTableModule,
     MatPaginatorModule,
     MatNativeDateModule
-  ]
+    ]
 })
 export class AgendamentoModule { }

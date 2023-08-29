@@ -1,8 +1,8 @@
 <h1 class="mt-4"> Contas </h1>
 <br />
 <div class="row-button">
-    <div class="col-md-3">
-        <button class="mat-button" mat-raised-button color="accent" (click)="novoCadastroConta()">Novo</button>
+    <div class="col-md-4">
+        <button class="mat-button" mat-raised-button color="accent" (click)="novoCadastroConta()"> + Novo</button>
     </div>
 
 </div>
@@ -17,15 +17,15 @@
                 <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
             </ng-container>
 
-            <!-- ID Column -->
+            <!-- Agencia Column -->
             <ng-container matColumnDef="agencia">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Agencia </mat-header-cell>
                 <mat-cell *matCellDef="let row"> {{row.agencia}} </mat-cell>
             </ng-container>
 
-            <!-- ID Column -->
+            <!-- Numero Conta Column-->
             <ng-container matColumnDef="numero_conta">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Numero Conta </mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Número Conta </mat-header-cell>
                 <mat-cell *matCellDef="let row"> {{row.numero_conta}} </mat-cell>
             </ng-container>
 

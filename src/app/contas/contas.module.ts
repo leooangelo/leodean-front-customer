@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ContasRoutingModule } from './contas-routing.module';
 import { ContasFormComponent } from './contas-form/contas-form.component';
 import { ContasListComponent } from './contas-list/contas-list.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
@@ -38,6 +38,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 @NgModule({
@@ -83,7 +84,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserModule
   ],
   exports: [
     ContasFormComponent,
