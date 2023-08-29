@@ -12,7 +12,7 @@ export class AuthService {
   jwtHelper: JwtHelperService = new JwtHelperService();
   apiURL: string = environment.apiURL;
 
-  constructor(private http: HttpClient,) { }
+  constructor(private http: HttpClient) { }
 
 
   AutenticarUsuario(usuario: Usuario){

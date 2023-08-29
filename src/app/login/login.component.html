@@ -40,11 +40,11 @@
                                         </form>
                                         <div
                                             class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            <button type="submit" class="btn btn-primary" [disabled]="!formLogin.valid"
-                                                *ngIf="!cadastrando">Enviar</button>
+                                            <button type="submit" class="btn btn-outline-primary"
+                                                [disabled]="!formLogin.valid" *ngIf="!cadastrando">Enviar</button>
 
-                                            <button type="submit" (click)="cancelarCadastro()" class="btn btn-danger"
-                                                *ngIf="cadastrando">Cancelar</button>
+                                            <button type="submit" class="btn btn-outline-danger"
+                                                (click)="cancelarCadastro()" *ngIf="cadastrando">Cancelar</button>
                                         </div>
                                     </form>
                                 </div>
