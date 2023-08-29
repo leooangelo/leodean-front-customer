@@ -10,7 +10,7 @@ import { ClientesModule } from './clientes/clientes.module';
 import { ClientesService } from './services/clientes.service';
 import { ContasModule } from './contas/contas.module';
 import { LoginComponent } from './login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LayoutComponent } from './layout/layout.component';
 import { AuthService } from './services/auth.service';
 import { TokenInterceptor } from './token.interceptor';
@@ -31,7 +31,8 @@ import { AgendamentoModule } from './agendamento/agendamento.module';
     HttpClientModule,
     ClientesModule,
     ContasModule,
-    AgendamentoModule
+    AgendamentoModule,
+    ReactiveFormsModule,
 
   ],
   providers: [ClientesService,

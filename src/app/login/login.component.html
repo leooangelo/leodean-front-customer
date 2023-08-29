@@ -23,23 +23,24 @@
                                             <app-clientes-form></app-clientes-form>
                                         </div>
 
-                                        <div *ngIf="isLogin" class="form-group">
-                                            <label class="small mb-1">Email</label>
-                                            <input type="email" name="email" [(ngModel)]="email"
-                                                class="form-control py4" autocomplete="off"
-                                                placeholder="Digite seu Login" required>
-                                        </div>
+                                        <form [formGroup]='formLogin' (ngSubmit)="onSubmit()">
+                                            <div *ngIf="isLogin" class="form-group">
+                                                <label class="small mb-1">Email</label>
+                                                <input type="email" name="email" formControlName="email"
+                                                    class="form-control py4" autocomplete="off" placeholder="Email"
+                                                    required>
+                                            </div>
 
-                                        <div *ngIf="isLogin" class="form-group">
-                                            <label class="small mb-1">Senha</label>
-                                            <input type="password" name="password" [(ngModel)]="password"
-                                                class="form-control py4" placeholder="Digite sua Senha" minlength="5"
-                                                maxlength="20" required>
-                                        </div>
-
+                                            <div *ngIf="isLogin" class="form-group">
+                                                <label class="small mb-1">Senha</label>
+                                                <input type="password" name="password" formControlName="password"
+                                                    class="form-control py4" placeholder="Senha" minlength="5"
+                                                    maxlength="20" required>
+                                            </div>
+                                        </form>
                                         <div
                                             class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            <button type="submit" class="btn btn-primary"
+                                            <button type="submit" class="btn btn-primary" [disabled]="!formLogin.valid"
                                                 *ngIf="!cadastrando">Enviar</button>
 
                                             <button type="submit" (click)="cancelarCadastro()" class="btn btn-danger"

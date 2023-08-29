@@ -26,7 +26,6 @@
                         !</mat-error>
                     <mat-error *ngIf="contaForm.get('agencia')?.hasError('minlength')">Agência deve ter 3
                         digitos !</mat-error>
-
                 </mat-form-field>
             </div>
         </div>
@@ -43,22 +42,6 @@
                 </mat-form-field>
             </div>
         </div>
-        <!-- 
-        <div class="col-md-4">
-            <div class="form-group">
-                <label>Agência</label>
-                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '')" class="form-control"
-                    formControlName="agencia" name="agencia" minlength="4" maxlength="4" required />
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="form-group">
-                <label>Conta</label>
-                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '')" class="form-control"
-                    formControlName="conta" name="conta" minlength="6" maxlength="6" required />
-            </div>
-        </div> -->
     </div>
 
     <div class="row">

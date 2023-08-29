@@ -1,33 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { Usuario } from './login';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
 
   nome: string = '';
   telefone: string = '';
   cpf: string = '';
-  email: string = '';
-  password: string = '';
   cadastrando: boolean = false;
   mensagem: string ='';
   sucess : boolean = false;
   errors: any = [];
   isLogin: boolean = true;
+  formLogin: FormGroup
   constructor(
     private router: Router,
-    private authService: AuthService  ) {
+    private authService: AuthService,
+    private formBuilder: FormBuilder  ) {
 
+  }
+  ngOnInit(): void {
+
+    this.formLogin = this.formBuilder.group({
+      email:[''],
+      password:['']
+    })
   }
 
   onSubmit(){
-    this.authService.AutenticarUsuario(this.buildBodyAuthUsuario()).subscribe(response =>{
+    this.authService.AutenticarUsuario(this.buildBodyAuthUsuario(this.formLogin.value)).subscribe(response =>{
       this.sucess = true;
       this.errors = [];
       localStorage.setItem('access_token',response);
@@ -38,10 +46,10 @@ export class LoginComponent {
     });
   }
 
-  buildBodyAuthUsuario(): Usuario{
+  buildBodyAuthUsuario(form: any): Usuario{
     const usuario = new Usuario();
-    usuario.email = this.email;
-    usuario.password = this.password;
+    usuario.email = form.email;
+    usuario.password = form.password;
     return usuario;
   }
 
